@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.css";
+import { BASE_URL, HEROKU_URL } from "../../global.js";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `http://localhost:8080/api/password-reset`;
+      const url = `${HEROKU_URL}/api/password-reset`;
       const { data } = await axios.post(url, { email });
       setMsg(data.message);
       setError("");

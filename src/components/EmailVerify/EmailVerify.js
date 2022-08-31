@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import success from "../../images/success.png";
 import styles from "./styles.module.css";
+import { BASE_URL, HEROKU_URL } from "../../global";
 
 const EmailVerify = () => {
   const [validUrl, setValidUrl] = useState(true);
@@ -11,7 +12,7 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:8080/api/users/${param.id}/verify/${param.token}`;
+        const url = `${HEROKU_URL}/api/users/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);

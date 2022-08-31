@@ -2,6 +2,7 @@ import { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./styles.module.css";
+import { BASE_URL, HEROKU_URL } from "../../global.js";
 
 const PasswordReset = () => {
   const [validUrl, setValidUrl] = useState(false);
@@ -9,7 +10,7 @@ const PasswordReset = () => {
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   const param = useParams();
-  const url = `http://localhost:8080/api/password-reset/${param.id}/${param.token}`;
+  const url = `${HEROKU_URL}/api/password-reset/${param.id}/${param.token}`;
 
   useEffect(() => {
     const verifyUrl = async () => {
@@ -22,8 +23,6 @@ const PasswordReset = () => {
     };
     verifyUrl();
   }, [param, url]);
-
-  console.log("Hello");
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import { BASE_URL, HEROKU_URL } from "../../global.js";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -21,7 +22,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080/api/users";
+      const url = `${HEROKU_URL}/api/users`;
       const { data: res } = await axios.post(url, data);
 
       setMsg(res.message);
