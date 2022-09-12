@@ -26,6 +26,7 @@ const Signup = () => {
       const { data: res } = await axios.post(url, data);
 
       setMsg(res.message);
+      console.log(data);
     } catch (error) {
       if (
         error.response &&
