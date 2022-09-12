@@ -13,7 +13,7 @@ const EmailVerify = () => {
     const verifyEmailUrl = async () => {
       try {
         const url = `${HEROKU_URL}/api/users/${param.id}/verify/${param.token}`;
-        const { data } = await axios.put(url);
+        const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);
       } catch (error) {
